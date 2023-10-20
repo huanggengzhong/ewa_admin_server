@@ -3,7 +3,10 @@ package core
 import (
 	"flag"
 	"fmt"
+	"github.com/fsnotify/fsnotify"
+	"github.com/gin-gonic/gin"
 	"github.com/huanggengzhong/ewa_admin_server/core/internal"
+	"github.com/huanggengzhong/ewa_admin_server/global"
 	"github.com/spf13/viper"
 	"os"
 )
@@ -16,7 +19,7 @@ func InitiallizeViper(path ...string) *viper.Viper {
 	if len(path) == 0 {
 		flag.StringVar(&config, "c", "", "开始StringVar绑定config")
 		flag.Parse()
-		fmt.Println("正在获取命令行c的值:", config)
+		//fmt.Println("正在获取命令行c的值:", config)
 
 		if config == "" {
 			/*
@@ -29,6 +32,7 @@ func InitiallizeViper(path ...string) *viper.Viper {
 			*/
 			configEnv := os.Getenv(internal.ConfigEnv)
 			if configEnv == "" {
+				//fmt.Println("使用gin环境配置")
 				//todo,使用gin环境配置
 				switch gin.Mode() {
 				case gin.DebugMode:
@@ -38,11 +42,11 @@ func InitiallizeViper(path ...string) *viper.Viper {
 				case gin.ReleaseMode:
 					config = internal.ConfigReleaseFile
 				}
-
 			} else {
 				//使用bash环境设置的值
+				config = configEnv
 			}
-			fmt.Println("configEnv:", configEnv)
+			//fmt.Println("configEnv:", configEnv)
 		} else {
 			//使用命令行路径,命令行正确自动赋值到config
 		}
@@ -52,13 +56,25 @@ func InitiallizeViper(path ...string) *viper.Viper {
 		fmt.Println()
 	}
 	vip := viper.New()
-	fmt.Println("config文件路径是:", config)
+	//fmt.Println("config文件路径是:", config)
 	vip.SetConfigFile(config)
 	vip.SetConfigType("yaml")
-
-	if err := vip.ReadInConfig(); err != nil {
+	err := vip.ReadInConfig()
+	if err != nil {
 		panic(fmt.Errorf("读取配置文件失败,失败信息:%s\n", err))
 	}
-	fmt.Printf("读取值:%v", vip.Get("app"))
+	//fmt.Printf("读取值:%v", vip.Get("app"))
+	vip.WatchConfig()
+	vip.OnConfigChange(func(e fsnotify.Event) {
+		fmt.Println("配置文件变化", e.Name)
+		if err = vip.Unmarshal(&global.EWA_CONFIG); err != nil {
+			fmt.Println("配置文件更换序列化失败", err)
+		}
+	})
+	//Unmarshal作用绑定在EWA_CONFIG上,使global.EWA_CONFIG.App可以获取想要的信息
+	if err = vip.Unmarshal(&global.EWA_CONFIG); err != nil {
+		fmt.Println("配置文件初始化化失败", err)
+	}
+	fmt.Printf("----viper配置初始化成功----")
 	return vip
 }
