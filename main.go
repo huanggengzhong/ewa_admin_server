@@ -19,5 +19,6 @@ func main() {
 	// TODO：3.数据库连接
 	// TODO：4.其他初始化
 	// TODO：5.启动服务
+	core.RunServer()
 
 }
