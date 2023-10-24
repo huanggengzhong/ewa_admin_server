@@ -12,7 +12,7 @@ import (
 )
 
 // 优先级: 项目目录文件>命令行 > bash环境变量 > gin默认值
-func InitiallizeViper(path ...string) *viper.Viper {
+func InitializeViper(path ...string) *viper.Viper {
 
 	var config string
 
