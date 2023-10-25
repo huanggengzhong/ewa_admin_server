@@ -5,7 +5,7 @@ import (
 	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
 	"github.com/huanggengzhong/ewa_admin_server/global"
-	"net/http"
+	"github.com/huanggengzhong/ewa_admin_server/initialize"
 	"time"
 )
 
@@ -14,17 +14,24 @@ type server interface {
 }
 
 func RunServer() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.String(http.StatusOK, "pong")
-	})
+	//r := gin.Default()
+	//r.GET("/ping", func(c *gin.Context) {
+	//	c.String(http.StatusOK, "pong")
+	//})
+	//address := fmt.Sprintf(":%d", global.EWA_CONFIG.App.Port)
+	//s := initServer(address, r)
+	//// 保证文本顺序输出
+	//time.Sleep(10 * time.Millisecond)
+	//fmt.Println("运行端口:", address)
+	//s.ListenAndServe()
+
+	//增加路由
+	Router := initialize.Routers()
 	address := fmt.Sprintf(":%d", global.EWA_CONFIG.App.Port)
-	s := initServer(address, r)
+	s := initServer(address, Router)
 	// 保证文本顺序输出
 	time.Sleep(10 * time.Millisecond)
-	fmt.Println("运行端口:", address)
-	s.ListenAndServe()
-
+	global.EWA_LOG.Error(s.ListenAndServe().Error())
 }
 
 func initServer(address string, router *gin.Engine) server {

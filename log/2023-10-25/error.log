@@ -1,0 +1,10 @@
+[east_white_common_admin/server]2023/10/25 - 16:35:50.662	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:01:06.892	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:08:15.016	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:14:52.606	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:23:04.286	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:41:40.770	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:43:37.728	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:44:08.373	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:44:40.290	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
+[east_white_common_admin/server]2023/10/25 - 17:45:39.461	[31merror[0m	/Users/luogengzhong/go/src/github.com/huanggengzhong/ewa_admin_server/core/server.go:34	accept tcp [::]:8889: use of closed network connection
