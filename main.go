@@ -23,7 +23,7 @@ func main() {
 	zap.ReplaceGlobals(global.EWA_LOG)
 	global.EWA_LOG.Info("服务启动成功!", zap.String("测试键", "内容哈哈哈哈"))
 	// TODO：3.数据库连接
-	initialize.Gorm()
+	global.EWA_DB = initialize.Gorm()
 	// TODO：4.其他初始化
 	// TODO：5.启动服务
 	core.RunServer()

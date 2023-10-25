@@ -11,4 +11,3 @@ go run main.go
 - gin默认文件:在main.go文件里的AppMode变量里赋值,比如:const AppMode = "debug" //运行环境，主要有三种：debug、test、release,对应core/internal/constants.go文件里的常量
 
 
-2023年10月24日17:24:53开始命名策略
